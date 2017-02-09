@@ -1,0 +1,1 @@
+dockerBasic("gici-pypi")
