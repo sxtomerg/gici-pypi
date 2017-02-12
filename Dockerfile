@@ -9,11 +9,10 @@ ADD .pypirc /root/
 ADD pip.conf /root/.pip/
 
 # upgrade pip version to latest
-RUN pip install --upgrade pip && \
-	export PATH=$PATH:/usr/local/bin
+RUN pip install --upgrade pip
 
-ADD pypi-requirements.txt /app/
-RUN pip install --process-dependency-links -r /app/pypi-requirements.txt && rm -rf /app/pypi-requirements.txt
+ADD pypi-requirements.txt /uploader/
+RUN pip install --process-dependency-links -r /uploader/pypi-requirements.txt && rm -rf /uploader/pypi-requirements.txt
 
 ADD docker-entrypoint.sh /uploader/
 RUN chmod +x /uploader/docker-entrypoint.sh
